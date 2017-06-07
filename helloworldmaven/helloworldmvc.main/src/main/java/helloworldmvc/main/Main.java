@@ -12,5 +12,7 @@ public class Main{
 		IView view = new View();
 		IModel model = new Model();
 		Controller controller = new Controller(view, model);
+		
+		controller.run();
 	}
 }
