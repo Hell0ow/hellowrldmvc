@@ -1,9 +1,9 @@
 package helloworldmvc.model;
 import helloworldmvc.Contract.IModel;
 
-public class Model implements IModel{
+public class Model implements IModel {
 	
 	public String getHelloWorld(){
-		return null;
+		return new DAOHelloWorld(null, null, null).getHelloWorldMessage();
 	}
 }
