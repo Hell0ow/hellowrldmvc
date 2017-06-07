@@ -22,7 +22,7 @@ public class DAOHelloWorld {
 		}
 	}
 	
-	//Getter et Setter
+	//Accesseur et mutateur
 	public DAOHelloWorld getInstance(){
 		return instance;
 	}
