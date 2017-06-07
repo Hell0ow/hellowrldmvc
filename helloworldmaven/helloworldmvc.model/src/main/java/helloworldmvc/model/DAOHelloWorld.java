@@ -1,8 +1,12 @@
 package helloworldmvc.model;
 import helloworldmvc.Contract.IModel;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class DAOHelloWorld {
 	
@@ -29,25 +33,27 @@ public class DAOHelloWorld {
 	
 	
 	private void readFile(){
-		File f = new File("HelloWorld.txt");
 		
-		if(!f.exists()){
-			System.out.println("Fichier absent.");
-		}
-		else{
-			FileInputStream fLect = null;
+		BufferedReader fLect = null;
+		
+		try {
+			FileReader f = new FileReader(FileName);
+			fLect = new BufferedReader(f);
+			setHelloWorldMessage(fLect.readLine());
 			
+		} catch (Exception e) {
+			System.out.println("Erreur de lecture");
+			System.exit(-1);
+		} finally {
 			try {
-				fLect = new FileInputStream(f);
-				
-			} catch (FileNotFoundException e) {
-				
+				fLect.close();
+			} catch (IOException e) {
 				System.out.println("Erreur de lecture");
 				System.exit(-1);
 			}
-			System.out.println();
 		}
 	}
+
 	
 	public String getHelloWorldMessage(){
 		readFile();
